@@ -11,7 +11,7 @@ try
     builder.Services.AddCap(x =>
     {
         x.UsePostgreSql(builder.Configuration.GetConnectionString("DefaultConnection"));
-        x.UseKafka(builder.Configuration.GetValue<string>("Kafka:BootstrapServers"));
+        x.UseKafka(builder.Configuration.GetValue<string>("Configuration:KafkaBootstrapServers"));
     });
     builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Configuration"));
     builder.Services.AddTransient<RiskEvaluationListener>();
