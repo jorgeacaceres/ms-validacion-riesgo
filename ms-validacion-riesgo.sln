@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37027.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ms-validacion-riesgo", "ms-validacion-riesgo.csproj", "{747C248B-DB1B-4302-9CCC-6227B2F02DEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{747C248B-DB1B-4302-9CCC-6227B2F02DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747C248B-DB1B-4302-9CCC-6227B2F02DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747C248B-DB1B-4302-9CCC-6227B2F02DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747C248B-DB1B-4302-9CCC-6227B2F02DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7A721AD-5671-4292-B017-B7E933469029}
+	EndGlobalSection
+EndGlobal

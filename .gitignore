@@ -1,0 +1,68 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache files
+.vs/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Mac
+.DS_Store
+
+# npm
+node_modules/
+
+# Package directories
+*.nupkg
+
+# Build results
+*.log
+*.tlog
+*.lastbuildstate
+*.vspscc
+*.vssscc
+
+# Debug files
+*.pdb
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Publish output
+publish/
+
+# Entity Framework
+*.dbmdl
+
+# User secrets
+secrets.json
+
+# JetBrains Rider
+.idea/
+
+# local history
+.localhistory/
+
+# dotnet watch
+.dotnetwatch*
+
+# Cap log / data
+cap-*.*
+
+# grpc tooling
+grpc-tools/**
+
+# Environment
+.env
+
+# Optional: ignore generated files by mapperly
+**/*.g.cs

@@ -1,0 +1,6 @@
+@ms_validacion_riesgo_HostAddress = http://localhost:5066
+
+GET {{ms_validacion_riesgo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
