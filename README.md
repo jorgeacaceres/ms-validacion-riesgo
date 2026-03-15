@@ -18,7 +18,17 @@ Microservicio .NET 8 orientado a eventos para la evaluación de riesgo transacci
 
 ## 3. Conexiones y configuración
 
-### 3.1 Reglas de Negocio
+### 3.1 base de datos
+
+`appsettings.json`:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Database=postgres;Username=postgres;Password=postgres;Include Error Detail=true;"
+}
+```
+
+### 3.2 Reglas de Negocio
 
 `appsettings.json`:
 
@@ -29,7 +39,7 @@ Microservicio .NET 8 orientado a eventos para la evaluación de riesgo transacci
 }
 ```
 
-### 3.2 Kafka + CAP
+### 3.3 Kafka + CAP
 
 appsettings.json:
 
@@ -43,7 +53,7 @@ appsettings.json:
 - Escucha el tópico risk-evaluation-request para procesar solicitudes de evaluación.
 - Publica el resultado en el tópico definido en TopicRiskEvaluationResponse mediante ICapPublisher.
 
-### 3.3 Logging
+### 3.4 Logging
 
 - Serilog configurado con consola y Seq
 
@@ -59,6 +69,7 @@ appsettings.json:
 ### 5. Requisitos de instalación
 
 - .NET 8 SDK
+- PostgreSQL
 - Kafka y Zookeeper según versión
 - Seq
 
@@ -87,13 +98,14 @@ Para despliegue en docker mediante docker-compose.yaml
     image: ms-validacion-riesgo-api:latest
     container_name: ms-validacion-riesgo
     ports:
-      - "5000:80"
+      - "5001:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=postgres;Username=postgres;Password=postgres;Include Error Detail=true
       - Configuration__KafkaBootstrapServers=kafka:29092
-      - Configuration__TopicRiskEvaluationResponse:risk-evaluation-response
-      - Configuration__BaseAmount:2000
-      - Configuration__AccumulatedAmount:5000
+      - Configuration__TopicRiskEvaluationResponse=risk-evaluation-response
+      - Configuration__BaseAmount=2000
+      - Configuration__AccumulatedAmount=5000
       - Serilog__WriteTo__1__Args__serverUrl=http://seq:80
     depends_on:
       - postgres
