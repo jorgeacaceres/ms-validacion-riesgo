@@ -62,15 +62,41 @@ appsettings.json:
 - Kafka y Zookeeper según versión
 - Seq
 
-## 8. Ejecución local
+## 6. Ejecución local
 
 1. Clonar repo.
 2. Ajustar `appsettings.json` conexiones (Postgres/Kafka/Seq).
 3. Ejecutar:
    - `dotnet run`
 
-## 9. Validaciones y control de errores
+## 7. Validaciones y control de errores
 
 - Lógica de Riesgo: Marcado automático como denied si se superan los límites configurados en RiskSettings.
 - Resiliencia: CAP asegura que la respuesta sea entregada al broker mediante reintentos automáticos en caso de desconexión.
 - Trazabilidad: Cada evaluación genera logs detallados en Seq para facilitar el monitoreo de operaciones rechazadas.
+
+## 8. Docker
+
+Para despliegue en docker mediante docker-compose.yaml
+
+```
+  ms-validacion-riesgo:
+    build:
+      context: ./ms-validacion-riesgo
+      dockerfile: Dockerfile
+    image: ms-validacion-riesgo-api:latest
+    container_name: ms-validacion-riesgo
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Configuration__KafkaBootstrapServers=kafka:29092
+      - Configuration__TopicRiskEvaluationResponse:risk-evaluation-response
+      - Configuration__BaseAmount:2000
+      - Configuration__AccumulatedAmount:5000
+      - Serilog__WriteTo__1__Args__serverUrl=http://seq:80
+    depends_on:
+      - postgres
+      - kafka
+      - seq
+```
